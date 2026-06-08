@@ -7,15 +7,42 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="img/flowers.png" type="image/x-icon" />
     <title>Flower</title>
+    <style>
+      /* Estilo para el botón de activación por si el navegador bloquea el audio */
+      #btn-musica {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        background-color: #ffe135; /* Color amarillo a juego */
+        color: #333;
+        border: none;
+        border-radius: 50px;
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+        transition: transform 0.2s;
+      }
+      #btn-musica:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body class="container">
-    <audio src="sound/ChristianBasso&HaienQiu-Flowers.mp3" autoplay></audio>
-    <div id="lyrics">
-     
-    </div>
-    <h1 class="titulo">Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br> <br>
-      Gracias por iluminar mis días con tu presencia.</h1>
+    
+    <audio id="mi-audio" src="sound/ChristianBasso&HaienQiu-Flowers.mp3"></audio>
+
+    <div id="lyrics"></div>
+    
+    <h1 class="titulo">
+      Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br> <br>
+      Gracias por iluminar mis días con tu presencia.
+    </h1>
   
+    <button id="btn-musica" style="display: none;">🎵 Activar Música</button>
+
     <div class="night"></div>
     <div class="flowers">
       <div class="flower flower--1">
@@ -25,7 +52,6 @@
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -52,7 +78,6 @@
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -77,7 +102,6 @@
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -148,46 +172,14 @@
 
       <div class="grow-ans" style="--d: 2.8s">
         <div class="flower__g-front">
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
-          <div
-            class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8"
-          >
-            <div class="flower__g-front__leaf"></div>
-          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8"><div class="flower__g-front__leaf"></div></div>
           <div class="flower__g-front__line"></div>
         </div>
       </div>
@@ -207,126 +199,95 @@
       </div>
 
       <div class="long-g long-g--0">
-        <div class="grow-ans" style="--d: 3s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 2.2s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.4s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.6s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 3s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 2.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 3.4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 3.6s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--1">
-        <div class="grow-ans" style="--d: 3.6s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.8s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.2s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 3.6s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 3.8s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 4.2s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--2">
-        <div class="grow-ans" style="--d: 4s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.2s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.4s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.6s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 4.4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 4.6s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--3">
-        <div class="grow-ans" style="--d: 4s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.2s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.6s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 3s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 3.6s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--4">
-        <div class="grow-ans" style="--d: 4s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.2s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.6s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 3s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 3.6s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--5">
-        <div class="grow-ans" style="--d: 4s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.2s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.6s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 3s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 3.6s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--6">
-        <div class="grow-ans" style="--d: 4.2s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.4s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.6s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 4.8s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 4.2s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 4.4s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 4.6s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 4.8s"><div class="leaf leaf--3"></div></div>
       </div>
 
       <div class="long-g long-g--7">
-        <div class="grow-ans" style="--d: 3s">
-          <div class="leaf leaf--0"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.2s">
-          <div class="leaf leaf--1"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.5s">
-          <div class="leaf leaf--2"></div>
-        </div>
-        <div class="grow-ans" style="--d: 3.6s">
-          <div class="leaf leaf--3"></div>
-        </div>
+        <div class="grow-ans" style="--d: 3s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d: 3.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d: 3.5s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d: 3.6s"><div class="leaf leaf--3"></div></div>
       </div>
     </div>
+
     <script src="anim.js"></script>
     <script src="main.js"></script>
+
+    <script>
+      const audio = document.getElementById('mi-audio');
+      const boton = document.getElementById('btn-musica');
+
+      function intentarReproducir() {
+        audio.play().then(() => {
+          // Si el navegador permite reproducir, nos aseguramos de ocultar el botón
+          boton.style.display = 'none';
+        }).catch(error => {
+          // Si el navegador bloquea el audio, mostramos el botón flotante
+          boton.style.display = 'block';
+        });
+      }
+
+      // 1. Intentar reproducir en cuanto cargue el DOM
+      window.addEventListener('DOMContentLoaded', intentarReproducir);
+
+      // 2. Si hace clic en el botón amarillo flotante
+      boton.addEventListener('click', () => {
+        audio.play();
+        boton.style.display = 'none';
+      });
+
+      // 3. Si hace clic en CUALQUIER otra parte de la pantalla (truco para que empiece solo)
+      document.body.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          boton.style.display = 'none';
+        }
+      }, { once: true }); // Se ejecuta una sola vez
+    </script>
   </body>
 </html>
