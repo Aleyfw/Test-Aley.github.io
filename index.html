@@ -1,32 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
     <title>Flowers</title>
-</head>
+    <style>
+      /* CAPA DE BIENVENIDA (Tu index original convertido en cortina) */
+      #pantalla-inicio {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #0b1522; /* Fondo oscuro nocturno */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 999999; /* Asegura estar por encima de las flores al inicio */
+        transition: opacity 1.2s ease, visibility 1.2s ease;
+      }
 
-<body>
-    <div class="greetings">
+      /* Animación suave para desaparecer */
+      .ocultar {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Ajuste para tu botón original (ya no lleva etiqueta <a>) */
+      .botones {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.2s;
+      }
+      .botones:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body class="container">
+    
+    <div id="pantalla-inicio">
+      <div class="greetings">
         <span>H</span>
         <span>o</span>
         <span>l</span>
         <span>a</span>
         <span>!</span>
-    </div>
-    <div class="description">
+      </div>
+      <div class="description">
         <span>ESTE DETALLE ES PARA TI :)</span>
-    </div>
-    <div class="button">
-        <button class="botones">
-            <a href="flower.html" style="color: #fff;">CLICK AQUÍ</a>
+      </div>
+      <div class="button">
+        <button class="botones" id="btn-comenzar" style="color: #fff;">
+          CLICK AQUÍ
         </button>
+      </div>
+    </div>
+    
+    <audio id="mi-audio" src="sound/flores.mp3" loop></audio>
+
+    <div id="lyrics"></div>
+    
+    <h1 class="titulo">
+      Un hibisco para tu pasión y lirios para tu pureza. <br> <br>
+      Gracias por iluminar mis días con tu presencia.
+    </h1>
+
+    <div class="night"></div>
+    
+    <div class="flowers">
+      
+      <div class="new-flower hibiscus">
+        <div class="hibiscus__stamen"></div>
+        <div class="hibiscus__petals">
+          <div class="hibiscus__petal p1"></div>
+          <div class="hibiscus__petal p2"></div>
+          <div class="hibiscus__petal p3"></div>
+          <div class="hibiscus__petal p4"></div>
+          <div class="hibiscus__petal p5"></div>
+        </div>
+        <div class="new-flower__stem"></div>
+      </div>
+
+      <div class="new-flower lily lily--1">
+        <div class="lily__petals">
+          <div class="lily__petal p1"></div>
+          <div class="lily__petal p2"></div>
+          <div class="lily__petal p3"></div>
+          <div class="lily__petal p4"></div>
+          <div class="lily__petal p5"></div>
+          <div class="lily__petal p6"></div>
+        </div>
+        <div class="new-flower__stem"></div>
+      </div>
+
+      <div class="new-flower lily lily--2">
+        <div class="lily__petals">
+          <div class="lily__petal p1"></div>
+          <div class="lily__petal p2"></div>
+          <div class="lily__petal p3"></div>
+          <div class="lily__petal p4"></div>
+          <div class="lily__petal p5"></div>
+          <div class="lily__petal p6"></div>
+        </div>
+        <div class="new-flower__stem"></div>
+      </div>
+
+      <div class="long-g long-g--1">
+        <div class="grow-ans" style="--d: 3s"><div class="leaf leaf--0"></div></div>
+      </div>
+      <div class="long-g long-g--2">
+        <div class="grow-ans" style="--d: 3.5s"><div class="leaf leaf--1"></div></div>
+      </div>
     </div>
 
-</body>
+    <script src="anim.js"></script>
+    <script src="main.js"></script>
 
+    <script>
+      const audio = document.getElementById('mi-audio');
+      const pantallaInicio = document.getElementById('pantalla-inicio');
+      const btnComenzar = document.getElementById('btn-comenzar');
+
+      btnComenzar.addEventListener('click', () => {
+        // 1. El navegador detecta el clic directo y desbloquea el sonido
+        audio.play().catch(error => {
+          console.log("Error al reproducir música: ", error);
+        });
+        
+        // 2. Desvanecer la pantalla de bienvenida de forma fluida
+        pantallaInicio.classList.add('ocultar');
+      });
+    </script>
+  </body>
 </html>
