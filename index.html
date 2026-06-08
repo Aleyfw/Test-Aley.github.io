@@ -9,7 +9,7 @@
     <link rel="icon" href="img/flowers.png" type="image/x-icon" />
     <title>Flowers</title>
     <style>
-      /* CAPA DE BIENVENIDA (Tu index original convertido en cortina) */
+      /* CAPA DE BIENVENIDA */
       #pantalla-inicio {
         position: fixed;
         top: 0;
@@ -21,20 +21,23 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        z-index: 999999; /* Asegura estar por encima de las flores al inicio */
-        transition: opacity 1.2s ease, visibility 1.2s ease;
+        z-index: 999999 !important; /* Forzar que esté arriba de todo */
+        transition: opacity 0.5s ease, visibility 0.5s ease;
       }
 
-      /* Animación suave para desaparecer */
+      /* TRUCO INFALIBLE: Forzamos la desaparición absoluta pase lo que pase */
       .ocultar {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
       }
 
-      /* Ajuste para tu botón original (ya no lleva etiqueta <a>) */
+      /* Aseguramos que el botón sea el elemento más alto y cliqueable de la pantalla */
       .botones {
-        cursor: pointer;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 1000000 !important; 
         border: none;
         transition: transform 0.2s;
       }
@@ -75,7 +78,6 @@
     <div class="night"></div>
     
     <div class="flowers">
-      
       <div class="new-flower hibiscus">
         <div class="hibiscus__stamen"></div>
         <div class="hibiscus__petals">
@@ -120,23 +122,29 @@
       </div>
     </div>
 
-    <script src="anim.js"></script>
-    <script src="main.js"></script>
-
     <script>
       const audio = document.getElementById('mi-audio');
       const pantallaInicio = document.getElementById('pantalla-inicio');
       const btnComenzar = document.getElementById('btn-comenzar');
 
-      btnComenzar.addEventListener('click', () => {
-        // 1. El navegador detecta el clic directo y desbloquea el sonido
-        audio.play().catch(error => {
-          console.log("Error al reproducir música: ", error);
-        });
+      btnComenzar.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita cualquier comportamiento extraño por defecto
         
-        // 2. Desvanecer la pantalla de bienvenida de forma fluida
-        pantallaInicio.classList.add('ocultar');
+        // 1. Activar música
+        if (audio) {
+          audio.play().catch(error => {
+            console.log("El navegador requiere interacción directa o la ruta del archivo es incorrecta:", error);
+          });
+        }
+        
+        // 2. Ocultar la pantalla de inmediato sin depender de transiciones lentas
+        if (pantallaInicio) {
+          pantallaInicio.classList.add('ocultar');
+        }
       });
     </script>
+
+    <script src="anim.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
